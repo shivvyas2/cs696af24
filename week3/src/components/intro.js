@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
 
 export default function Intro() {
@@ -7,7 +7,13 @@ export default function Intro() {
   function decrementCounter() {
     setCounter(counter - 1);
   }
+useEffect(() => {
+  fetch('http://localhost:9000')
+  .then(response => console.log(response.text()))
+  .catch(error => console.log(error))
+  
 
+})
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
       <Row>
