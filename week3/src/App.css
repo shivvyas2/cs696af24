@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin: 10px;
 }
 
 .App-link {
@@ -34,5 +35,39 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+.custom-navbar {
+  background-color: #fefbf6; /* Soft white background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  padding-right: 30%;
+}
+
+.navbar-brand {
+  color: #333; /* Dark gray for contrast */
+  font-weight: bold;
+  padding-right: 10%;
+}
+
+.nav-link {
+  color: #777; /* Softer gray for regular links */
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #333; /* Darker color on hover */
+}
+
+.active-link {
+  color: #333; /* Active link state */
+  border-bottom: 2px solid #333; /* Underline active link */
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 5px 10px;
   }
 }
