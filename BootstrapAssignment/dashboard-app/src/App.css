@@ -1,38 +1,224 @@
-.App {
-  text-align: center;
+/* General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body, html {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app {
+  display: flex;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Sidebar Styles */
+.sidebar {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+  color: #fff;
+  width: 250px;
+  height: 100vh; /* Full height of the viewport */
+  transition: width 0.3s ease;
+  position: fixed; /* Keep the sidebar fixed on the left */
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1000; /* Ensure sidebar is on top */
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar-header {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 1.5em;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-header h2 {
+  color: #111;
+  margin-left: 10px;
+  font-size: 1.2em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #111;
+}
+
+.menu-item:hover {
+  background-color: #444;
+  color: #111;
+}
+
+.menu-icon {
+  font-size: 1.5em;
+  margin-right: 15px;
+  transition: margin 0.3s ease;
+  color: #111;
+}
+
+.menu-text {
+  font-size: 1em;
+  display: inline-block;
+}
+
+.sidebar.collapsed .menu-icon {
+  margin-right: 0;
+}
+
+.sidebar.collapsed .menu-text {
+  display: none;
+}
+
+/* Highlight active menu item */
+.menu-item.active {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 900; /* Ensure header is above other content */
+}
+
+.header input {
+  width: 250px;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+.header-icons span {
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px; /* Offset for the sidebar width */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 70px; /* Adjust main content margin for collapsed sidebar */
+}
+
+/* Stat Card Container */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Stat Card Styles */
+.stat-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.stat-card p {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #333;
+}
+
+/* Chart Styles */
+.chart {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  height: 300px; /* Set a specific height for the chart */
+}
+
+.chart h3 {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Performance Metrics Styles */
+.performance-metrics {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.performance-metrics h3 {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.performance-metrics p {
+  font-size: 1em;
+  color: #777;
+  margin-top: 10px;
+}
+
+.metric-bar {
+  background-color: #ddd;
+  height: 8px;
+  border-radius: 4px;
+  margin: 5px 0 15px;
+  overflow: hidden;
+}
+
+.metric-bar div {
+  height: 100%;
+  background-color: #333;
 }
